@@ -123,16 +123,10 @@ function updateLocalStorage() {                        // function to update loc
 
 // target the button element and add an event listener to the button that calls the toDoList function when clicked.
 const myBtn = document.querySelector(".btn"); // target the button element
-// myBtn.addEventListener("click", toDoList);
-
-
 
 myBtn.addEventListener("submit", (event) => {  // event listener to add task
   event.preventDefault(); // prevent the form from refreshing the page
-  toDoList();  // call the function to create the list
+  alert(`You submitted: ${form.querySelector("input").value}`);
+  // toDoList();  // call the function to create the list
   updateLocalStorage(); // call the function to update local storage
 });
-
-
-
-
