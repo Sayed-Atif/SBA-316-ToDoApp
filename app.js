@@ -22,9 +22,16 @@ h1Element.style.textShadow = "1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue";
 
 
 const inputElement = document.querySelector(".input"); // target the input element
+// avoid input field from adding tasks to the list by pressing enter key.
+inputElement.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+  }else if (event.key === "myBtn") {
+    toDoList();
+  }
+})
 
-// inout field validation function to check if the input field is empty or not
-
+// input field validation function to check if the input field is empty or not.
 function checkInput() {
   if (inputElement.value === "") {
     alert("Please enter a task");
@@ -33,6 +40,7 @@ function checkInput() {
     return true;
   }
 }
+ checkInput();
 
 
 function updateLocalStorage() {
@@ -121,12 +129,19 @@ function updateLocalStorage() {                        // function to update loc
 }
 
 
-// target the button element and add an event listener to the button that calls the toDoList function when clicked.
-const myBtn = document.querySelector(".btn"); // target the button element
+// to create a button element and append it to the body
+const myForm = document.querySelector(".form");
+const myBtn = document.createElement("button");
+myBtn.setAttribute("id", "submit");
+myBtn.textContent = "Add Task";
+myForm.appendChild(myBtn);
 
-myBtn.addEventListener("submit", (event) => {  // event listener to add task
-  event.preventDefault(); // prevent the form from refreshing the page
-  alert(`You submitted: ${form.querySelector("input").value}`);
-  // toDoList();  // call the function to create the list
-  updateLocalStorage(); // call the function to update local storage
-});
+
+
+
+
+
+
+
+
+
